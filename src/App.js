@@ -1,26 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
+//import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [counter, setCounter] = useState(0);
+  const [student, setStudent] = useState('Harry');
+
+  useEffect(() => {
+    document.title = `Your counter is at ${counter}.`
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Your counter is at {counter}</p>
+      <p>Your name is {student}</p>
+      <button onClick={() => setCounter(counter + 1)}>Increase</button>
+      <button onClick={() => setCounter(counter - 1)}>Decrease</button>
+      <button onClick={() => setStudent('Callum, the mime')}>Clickity Clack</button>
     </div>
   );
+} 
+
+export default App; 
+
+/*
+class App extends Component {
+  state = {
+    number: 0
+  }
+
+  incrementFunction = () => {
+    this.setState({
+      number: this.state.number + 1
+    })
+  }
+
+  decrementFunction = () => {
+    this.setState({
+      number: this.state.number - 1
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {<p>{this.state.number}</p>}
+        <button onClick={this.incrementFunction}>Increase</button>
+        <button onClick={this.decrementFunction}>Decrease</button>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App; */
